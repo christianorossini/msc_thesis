@@ -1,0 +1,76 @@
+\chapter{Introduction} 
+ssfsdfds
+
+
+\section{Introduction}
+\label{sec:introduction}
+
+\subsection{Context and Problem}
+
+Code smell is a symptom of poor code design on software development \cite{fowler1999refactoring}. It often occurs when developers poorly conceived the design of the code component or because they did not properly designed the solution due to strict deadlines \cite{palomba2014they}. Empirical studies indicate that code smells leads to a lack of code comprehensibility \cite{abbes2011empirical} and increases change and fault-proneness, affecting negatively the software maintainability \cite{yamashita2013exploring}. Refactoring \cite{fowler1999refactoring} is a useful technique that tends to prevent the occurrence of code smells.
+
+Fowler and Beck \cite{fowler1999refactoring} describes each type of code smell informally, i. e., there aren't thresholds that objectively define when a class or method is "smelly" or not. Such informal definition of code smell may lead two or more developers to reason about each smell occurrence in their own way, subjectively. For example, from Long Method emerges some questions such as (i) When a method is actually long? (ii) How many responsibilities characterize a long method? (iii) What is the threshold of source code lines that characterize a long method? These questions may result in divergent opinions, depending on each developer's experiences and backgrounds \cite{hozano2018you}. The subjectivity issue turns more relevant when we assume that a considerably large proportion of software professionals (32\%) states that they did not know about code smells \cite{yamashita2013developers}. As a consequence of different viewpoints, conflicting perceptions on the same code bases may be notable, impacting the consistency across code reviews \cite{hozano2018you}.
+
+Peer code review, a manual inspection of source code by developers other than the author, is recognized as a valuable tool for reducing software defects and improving the quality
+of software projects \cite{bacchelli2013expectations}. Although the availability of tools \cite{fontana2012automatic} and machine learning techniques \cite{azeem2019machine} for smell detection, code reviewers still need to analyze code design problems individually to confirm its occurrence on the system. For instance, in pull-based development \cite{gousios2015work}, a distributed software development that allows developers to work on a software project even being geographically dispersed, there is a reviewer staff of core developers that is responsible to accept or reject pushed changes to the repository. In the reviewing process, most of the rejected changes refer to design problems, including architecture violations, use of bad programming practices, violations of good object-oriented design principles, lack of abstraction and poor implementation \cite{silva2016does}. Thus, a code review process requires them to detect smells in unfamiliar code. 
+
+The subjectiveness concerned with individual code smells assessment was addressed by previous studies \cite{hozano2018you, palomba2014they, taibi2017developers}. These were empirical studies aimed to expose developers to software code snippets and gather their viewpoints about the occurrence of certain types of code smells, obtaining qualitative findings regards to how similar they detect code smells \cite{hozano2018you} and how they perceive and associate the problem to the symptoms of smell definition \cite{palomba2014they}. In the case of Hozano et al. \cite{hozano2018you}, they explored personal factors, such as experiences and heuristics formulated by developers to discover agreements among them when evaluating code smells in code. In the experimental phase, the authors present to the developer a suspicious source code that hosts a code smell as well as a description of the informal definition of the smell to be evaluated, asking the developer to confirm or not the occurrence of the described code smell type in source code. However, it lacks some informative element that may describe why certain suspicions source code was previously classified as code smell in order to aid developers in reasoning about the occurrence of a code smell with more effectivity.
+
+In our research, rather than merely show a suspicions source code and the respective informal definition of the code smell, we propose to show to the developer a visualization of a decision tree classifier, composed by some metric-based rules, aimed to inform the developer the reasons why some source code was previously classified as a host of a code smell. Thereafter, the developer can confirm or not the occurrence of certain code smell aided by such rules that indicates the reason why the source code is "smelly". Inspecting a decision tree model representation, through its nodes and rules, can give new insights to developers in order to identify which attributes (metrics) are the strongest predictors of the class variable (smelly or not) \cite{freitas2014comprehensible}. These new insights may tease the developer to reasoning the occurrence of a code smell widely, not restricting to factors concerned only to past experiences and backgrounds.
+
+\subsection{Objective}
+
+Inspired by previous study \cite{hozano2018you}, we aim at investigating how the code smell agreement among developers may be influenced by the visualization provided by a comprehensible classification model, the decision tree classifier. \cite{freitas2014comprehensible}. This classifier was largely employed \cite{azeem2019machine} in recent studies focused on automatic smell detection and offered good effectivity measures \cite{amorim2015experience}.  Moreover, decision trees have an output that is pretty easy to interpret, giving the opportunity to properly understand the mechanisms that lead to the detection of a certain code smell instance \cite{azeem2019machine}. 
+
+In this study we address the following hypotheses:
+    \begin{itemize}
+        \item \textbf{(H1)} rather than only analyze raw source codes (without any support), developers exposed to the rules of a classification model, each rule with transparent software metric, tends to drive the developer's perception closer to each other, minimizing the subjectivity inherited from code smell informality, improving agreements among them.
+        %\item \textbf{(H2)} code smell evaluation aided by transparent metric-based rules improves the confidence of developers about the occurrence of code smell, due to the opportunity to visualize metric-based rules and its thresholds.
+        \item \textbf{(H2)} the evaluation process takes less effort to be concluded when the developer is exposed to elements which characterize the smelly code. Such elements are the classification model rules.
+        \item \textbf{(H3)} from the perspective of decision making, the decision tree visualization is useful to the evaluation process.
+    \end{itemize}
+
+\subsection{Execution and main results}
+
+To perform  the objectives aforementioned,  we gather collaborations from 30  developers from industry and academy. They evaluated 2 groups with 4 tasks each with source codes potentially affected by some type of smell. Each group of task expose the developer to a source code in distinct perspectives, so one shows the classification model that predicted the code as "smelly" whereas the another group doesn't (blind evaluation).  The experiment was carry out through a web-based app created exclusively to collect the evaluations from participants, designed to comply with the requirements of study design.
+
+The main results obtained are:
+
+\begin{itemize}
+    \item We got evidence that code smells detection aided by a decision tree leads to a  relative improvement of agreement in relation to detections based solely on code analysis. After detaching different kinds of participants from the whole set of participants, we discovered groups that behave distinctly. The agreement on the detections aided by decision tree performed better with experienced code smell detection participants, which brings the evidence that such profile got the best out of our approach.
+
+    \item As for the effort, the detection of code smell aided by decision tree did not decrease in time compared to detection based only on code inspection. For both groups of tasks, there isn’t any evidence that indicates the benefits related to the effort reduction when detecting code smells with decision tree, i. e., the time spent to detect smells with decision tree tend to be equivalent or worst than the time spent to detect code smells based solely in code inspection. 
+    
+    \item Finally, based on the answers provided by the majority of participants, our experiment suggests that the decision trees used to support code smell detection are useful to the developer in terms of insights for decision making. The classification models (decision trees) that represent the detection rules of a God Class and a Long method were the best-evaluated models in terms of usefulness, i. e., models that offered good contributions to decision making.
+\end{itemize}
+
+
+
+\subsection{Contributions}
+ 
+Our approach offered a novel way to detect code smells using metric-based rules to improve reasoning about the smelliness of the source code under analysis.
+From this study emerges the following contributions:
+     \begin{itemize}
+         \item favors the decision making during the code review process;
+         \item minimization of conflicting code smell evaluations, favoring the consistency across code reviews;
+         \item identification of the most concerned issues about the usefulness of the decision tree models.
+     \end{itemize}
+
+\subsection{Research structure}
+
+This research is structured as follows. 
+\begin{itemize}
+    \item Section \ref{sec:background} describes some background useful for the understanding of this work, including a brief description of code smell and decision tree classifier.
+    
+    \item Section~\ref{sec:studydesign} presents the research study and its goals, the design of our online experiment, and how the data will be analyzed.
+    
+    \item Section~\ref{sec:results} and \ref{sec:discussions} present and discuss the results obtained.
+    
+    %\item Chapter~\ref{sec:implications} presents the implications of this study.
+    
+    \item Section~\ref{sec:relateds} discuss past research of related to code smells, agreements among developers and detection methods. 
+    
+    \item Section~\ref{sec:limitations-threats} details the limitations and threats to validity of this study.
+    
+    \item Section~\ref{sec:conclusion} presents our conclusion and ideas which could lead to future contributions in the field of Software Engineering.
+\end{itemize}
