@@ -1,11 +1,9 @@
 \chapter{Study Background} 
-
-\section{Study Background}  
 \label{sec:background}
 
 In this chapter we contextualize our work, giving an overview of code smells and machine learning, the base concepts used in this study.
 
-\subsection{Code Smell}
+\section{Code Smell}
 
 Code anomaly, so-called "code smell", is an implementation choice that indicates a design problem which violates the well-known principles of cohesion, abstraction and separation of concerns \cite{oizumi2016code} on software development. There are more than 20 \cite{fowler1999refactoring} different types of code smells that contributes to increase comprehension effort \cite{abbes2011empirical} and leads to design degradation \cite{oizumi2016code}. The adoption of refactoring, a clean-up process that improves the code's internal structure \cite{fowler1999refactoring}, is the way out to prevent the presence of code smells in code. Fowler et. al. \cite{fowler1999refactoring} about 20 sets of symptoms of code smells. These include large classes, feature envy, long parameter lists, and lazy classes. Each code-smell type is accompanied by refactoring suggestions to remove it.
 
@@ -13,12 +11,12 @@ We chose four different types of code smells to carry out experiments, which are
 
 %\subsection{Software metrics}
 
-\subsection{Machine Learning}
+\section{Machine Learning}
 \cite{vanderplas2016python} states that Machine learning involves building mathematical models to help
 understand data. Once these models have been fit to previously
 seen data, they can be used to predict and understand aspects of newly observed data. The learning process might be categorized into two main types: supervised learning and unsupervised learning. 
 
-\subsection{Supervised and Unsupervised Learning}
+\section{Supervised and Unsupervised Learning}
 
 Supervised learning is a method that attempts to discover the relationship between input attributes (independent variables) and a target attribute (referred to as a dependent variable).
 The relationship that is discovered is represented in a structure referred
@@ -30,7 +28,7 @@ as marketing, finance and manufacturing  \cite{rokach2008data}.
 
 Unsupervised learning involves modeling the features of a dataset without reference to any label. These models include tasks such as clustering, in which data is automatically assigned to some number of discrete groups. As a result, the model can infer labels on unlabeled data \cite{vanderplas2016python}.
 
-\subsection{Decision Tree Classifier}
+\section{Decision Tree Classifier}
 
 A decision tree is a type of supervised learning that uses a tree structure to represent a number of possible decision paths and
 an outcome for each path. They’re very easy to understand and

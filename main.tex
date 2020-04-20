@@ -15,244 +15,404 @@
 % (oliveiramc@ic.ufal.br - Coordenador do PPGI)
 % em Julho de 2018
 
-% \documentclass[titlepage,12pt]{article}
+% readaptado por: Christiano Rossini Martins Costa
+% (christiano.rossini.mc@gmail.com)
+% em abril de 2020
 
-\documentclass[titlepage,12pt,openright,oneside,sumario=tradicional,a4paper,english,article]{abntex2}
+\documentclass[
+	% -- opções da classe memoir --
+	12pt,				% tamanho da fonte
+	openright,			% capítulos começam em pág ímpar (insere página vazia caso preciso)
+	oneside,			% para impressão em recto e verso. Oposto a oneside
+	a4paper,			% tamanho do papel. 
+	% -- opções da classe abntex2 --
+	%chapter=TITLE,		% títulos de capítulos convertidos em letras maiúsculas
+	%section=TITLE,		% títulos de seções convertidos em letras maiúsculas
+	%subsection=TITLE,	% títulos de subseções convertidos em letras maiúsculas
+	%subsubsection=TITLE,% títulos de subsubseções convertidos em letras maiúsculas
+	% -- opções do pacote babel --
+	brazil,  			% idioma adicional para hifenização
+	french,				% idioma adicional para hifenização
+	spanish,			% idioma adicional para hifenização
+	english				% o último idioma é o principal do documento
+	]{abntex2}
 
-\chapterstyle{default}
-%\usepackage[a4paper, left=3cm,top=3cm,right=2cm,bottom=2cm]{geometry}
+% ---
+% Pacotes básicos 
+% ---
+\usepackage{lmodern}			% Usa a fonte Latin Modern			
+\usepackage[T1]{fontenc}		% Selecao de codigos de fonte.
+\usepackage[utf8]{inputenc}		% Codificacao do documento (conversão automática dos acentos)
+\usepackage{indentfirst}		% Indenta o primeiro parágrafo de cada seção.
+\usepackage{color}				% Controle das cores
+\usepackage{graphicx}			% Inclusão de gráficos
+\usepackage{microtype} 			% para melhorias de justificação
+% ---
 
-\usepackage{color}
+% ---
+% Pacotes de citações
+% ---
+\usepackage[brazilian,hyperpageref]{backref}	 % Paginas com as citações na bibl
+\usepackage[alf]{abntex2cite}	% Citações padrão ABNT
+
+% --- 
+% CONFIGURAÇÕES DE PACOTES
+% --- 
+
+% ---
+% Configurações do pacote backref
+% Usado sem a opção hyperpageref de backref
+\renewcommand{\backrefpagesname}{Citado na(s) página(s):~}
+% Texto padrão antes do número das páginas
+\renewcommand{\backref}{}
+% Define os textos da citação
+\renewcommand*{\backrefalt}[4]{
+	\ifcase #1 %
+		Nenhuma citação no texto.%
+	\or
+		Citado na página #2.%
+	\else
+		Citado #1 vezes nas páginas #2.%
+	\fi}%
+% ---
+
+% ---
+% Informações de dados para CAPA e FOLHA DE ROSTO
+% ---
+\titulo{On the agreement among developers when detecting code smells aided by decision tree}
+\autor{Christiano Rossini Martins Costa}
+\local{Maceió}
+\data{abril de 2020}
+\orientador{Baldoino Fonseca dos Santos Neto}
+%\coorientador{Equipe \abnTeX}
+\instituicao{%
+  Universidade Federal de Alagoas
+  \par
+  Instituto de Computação
+  \par
+  Programa de Pós-Graduação em Informática}
+\tipotrabalho{Dissertação de Mestrado}
+% O preambulo deve conter o tipo do trabalho, o objetivo, 
+% o nome da instituição e a área de concentração 
+\preambulo{Dissertação apresentada como requisito parcial para obtenção do grau de Mestre pelo Curso de Mestrado em Informática do Instituto de Computação da Universidade Federal de Alagoas.}
+% ---
+
+% ---
+% Configurações de aparência do PDF final
+
+% alterando o aspecto da cor azul
+\definecolor{blue}{RGB}{41,5,195}
+
+% informações do PDF
+\makeatletter
+\hypersetup{
+     	%pagebackref=true,
+		pdftitle={\@title}, 
+		pdfauthor={\@author},
+    	pdfsubject={\imprimirpreambulo},
+	    pdfcreator={LaTeX with abnTeX2},
+		pdfkeywords={abnt}{latex}{abntex}{abntex2}{trabalho acadêmico}, 
+		colorlinks=true,       		% false: boxed links; true: colored links
+    	linkcolor=blue,          	% color of internal links
+    	citecolor=blue,        		% color of links to bibliography
+    	filecolor=magenta,      		% color of file links
+		urlcolor=blue,
+		bookmarksdepth=4
+}
+\makeatother
+% --- 
+
+% ---
+% Posiciona figuras e tabelas no topo da página quando adicionadas sozinhas
+% em um página em branco. Ver https://github.com/abntex/abntex2/issues/170
+\makeatletter
+\setlength{\@fptop}{5pt} % Set distance from top of page to first float
+\makeatother
+% ---
+
+% ---
+% Possibilita criação de Quadros e Lista de quadros.
+% Ver https://github.com/abntex/abntex2/issues/176
+%
+\newcommand{\quadroname}{Quadro}
+\newcommand{\listofquadrosname}{Lista de quadros}
+
+\newfloat[chapter]{quadro}{loq}{\quadroname}
+\newlistof{listofquadros}{loq}{\listofquadrosname}
+\newlistentry{quadro}{loq}{0}
+
+% configurações para atender às regras da ABNT
+\setfloatadjustment{quadro}{\centering}
+\counterwithout{quadro}{chapter}
+\renewcommand{\cftquadroname}{\quadroname\space} 
+\renewcommand*{\cftquadroaftersnum}{\hfill--\hfill}
+
+\setfloatlocations{quadro}{hbtp} % Ver https://github.com/abntex/abntex2/issues/176
+% ---
+
+% --- 
+% Espaçamentos entre linhas e parágrafos 
+% --- 
+
+% O tamanho do parágrafo é dado por:
+%\setlength{\parindent}{1.3cm}
+
+% Controle do espaçamento entre um parágrafo e outro:
+%\setlength{\parskip}{0.2cm}  % tente também \onelineskip
+
+% ---
+% compila o indice
+% ---
+\makeindex
+% ---
+
+
+% ---
+% Pacotes acessórios
+% ---
 \usepackage{longtable}
-\usepackage{lipsum} 
 \usepackage{tabulary}
 \usepackage{tabu}
 \usepackage{ltablex}
-
-%\usepackage[portuges,english]{babel}
-
-%Portuguese-specific commands
-%--------------------------------------
-%\usepackage[english,brazil,portuguese]{babel}
-%--------------------------------------
- 
-%Acentuação em UTF8
-\usepackage[utf8]{inputenc}            % 
-%\usepackage[latin1]{inputenc}
-
 \usepackage{times}
-%\usepackage[latin1]{inputenc}
-\usepackage[T1]{fontenc}
-\usepackage{fancyheadings}
-\usepackage{fancyvrb}
-
+%\usepackage{fancyhdr}
+%\usepackage{fancyvrb}
 \usepackage{algorithmic}
 \usepackage[nothing]{algorithm}
 \usepackage{latexsym}
-\usepackage{indentfirst}                 % indenta os primeiros parágrafos
 \usepackage{amsmath}  %texto no modo math
-%\usepackage[colorlinks,pdftex,pdfpagelabels=false]{hyperref} % Inclusão de links  
-
+%\usepackage[colorlinks,pdftex,pdfpagelabels=false]{hyperref} % Inclusão de links 
 \usepackage{graphicx,url}
 \usepackage{import}
 \usepackage{booktabs}
-
 \usepackage{lscape}
 \usepackage{flushend}
-\usepackage{longtable}
 \usepackage[table,xcdraw]{xcolor}
 \usepackage{multirow}
 \usepackage{color, colortbl}
 \usepackage{todonotes}
-
 \usepackage{pdfpages}
+%\usepackage{hyperref} % controla a formação do índice
+% ---
 
-\hypersetup{
-		colorlinks=false}%,     		% false: boxed links; true: colored links
-		%linkcolor=blue,        		% color of internal links
-		%citecolor=blue,        		% color of links to bibliography
-		%filecolor=magenta,     		% color of file links
-		%urlcolor=blue}
+% ----
+% Comandos de estilo e espacamento (Personalização) ----------------------------------------
+% ----
+% \newlength{\defbaselineskip}
+% \setlength{\defbaselineskip}{\baselineskip}
+% \newcommand{\setlinespacing}[1]%
+%           {\setlength{\baselineskip}{#1 \defbaselineskip}}
 
-\usepackage{hyperref} % controla a formação do índice
+% \setcounter{topnumber}{2}
+% \renewcommand{\topfraction}{.7}
+% \setcounter{bottomnumber}{1}
+% \renewcommand{\bottomfraction}{.3}
+% \setcounter{totalnumber}{3}
+% \renewcommand{\textfraction}{.2}
+% \renewcommand{\floatpagefraction}{.5}
+% \setcounter{dbltopnumber}{2}
+% \renewcommand{\dbltopfraction}{.7}
+% \renewcommand{\dblfloatpagefraction}{.5}
+% %
+% \oddsidemargin -28pt
+% \evensidemargin -28pt
+% \marginparwidth 50pt
+% \marginparsep 5pt
+% \topmargin -27pt
+% \hoffset 15mm
+% \textheight 237mm
+% \textwidth 155mm
+% \renewcommand{\baselinestretch}{1.5}
+% %
+% \newenvironment{braced}
+%  {\par\smallskip\hbox to\columnwidth\bgroup
+%   \hss$\left\{\begin{minipage}{\columnwidth}}
+%  {\end{minipage}\right\}$\hss\egroup\smallskip}
 
-%Referencias na forma da ABNT
-\usepackage[alf]{abntex2cite} 
+% % Color definitions (RGB model)
+% \definecolor{mycolor1}{rgb}{0.753,0.753,0.753}
 
-\sloppy
+% ----
 
-% Comandos de estilo e espacamento ----------------------------------------
-\newlength{\defbaselineskip}
-\setlength{\defbaselineskip}{\baselineskip}
-\newcommand{\setlinespacing}[1]%
-           {\setlength{\baselineskip}{#1 \defbaselineskip}}
+% ----
+% Reestilização dos capítulos ----------------------------------------
+% ----
+\renewcommand{\ABNTEXchapterfont}{\fontfamily{cmr}\fontseries{b}\selectfont}
+\renewcommand{\ABNTEXchapterfontsize}{\HUGE}
+% --------------------------------------------------------------------
 
-\setcounter{topnumber}{2}
-\renewcommand{\topfraction}{.7}
-\setcounter{bottomnumber}{1}
-\renewcommand{\bottomfraction}{.3}
-\setcounter{totalnumber}{3}
-\renewcommand{\textfraction}{.2}
-\renewcommand{\floatpagefraction}{.5}
-\setcounter{dbltopnumber}{2}
-\renewcommand{\dbltopfraction}{.7}
-\renewcommand{\dblfloatpagefraction}{.5}
-%
-\oddsidemargin -28pt
-\evensidemargin -28pt
-\marginparwidth 50pt
-\marginparsep 5pt
-\topmargin -27pt
-\hoffset 15mm
-\textheight 237mm
-\textwidth 155mm
-\renewcommand{\baselinestretch}{1.5}
-%
-
-\newenvironment{braced}
- {\par\smallskip\hbox to\columnwidth\bgroup
-  \hss$\left\{\begin{minipage}{\columnwidth}}
- {\end{minipage}\right\}$\hss\egroup\smallskip}
-
-
-% Color definitions (RGB model)
-\definecolor{mycolor1}{rgb}{0.753,0.753,0.753}
-
+% ----
+% Início do documento
+% ----
 \begin{document}
 
-% Primeira Folha do Documento %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-
-%
-% Cover
-%
+% Seleciona o idioma do documento (conforme pacotes do babel)
 \selectlanguage{english}
+%\selectlanguage{brazil}
 
+% Retira espaço extra obsoleto entre as frases.
+\frenchspacing 
+
+% ----------------------------------------------------------
+% ELEMENTOS PRÉ-TEXTUAIS
+% ----------------------------------------------------------
+% \pretextual
+
+% ---
+% Capa (versão canônica ABNTEX2)
+% ---
+%\imprimircapa  
+% ---
+
+% ---
+% Capa (versão alternativa UFAL)
+% ---
 \import{sections/}{capa.tex}
+\imprimircapa
 
-\newpage
-\thispagestyle{empty}
+% ---
+% Folha de rosto (versão canônica ABNTEX2)
+% (o * indica que haverá a ficha bibliográfica)
+% ---
+%\imprimirfolhaderosto*
+% ---
 
-%
-% Folha de Rosto
-%
-
+% ---
+% Folha de Rosto (versão alternativa UFAL)
+% ---
 \import{sections/}{folha-de-rosto.tex}
-\thispagestyle{empty}
+\imprimirfolhaderosto*
 
 %
 % Filha catalográfica
 %
-
-\includepdf[pages=-,pagecommand={}]{Fichacat7910-2019.pdf}
+\begin{fichacatalografica}
+    \includepdf[pages=-,pagecommand={}]{Fichacat7910-2019.pdf}
+\end{fichacatalografica}
 %\import{sections/}{folha-aprovacao.tex}
-\newpage
-\thispagestyle{empty}
 
 %
 % Folha de aprovação para ser impressa e preenchida pela banca examinadora
 %
-
-%\includepdf[pages=-,pagecommand={}]{folha_aprovacao.pdf}
-\import{sections/}{folha-aprovacao.tex}
-\newpage
-\thispagestyle{empty}
+\begin{folhadeaprovacao}
+    \includepdf[]{folha_aprovacao.pdf}
+\end{folhadeaprovacao}
 
 %
 % Dedicatória
 %
+\begin{dedicatoria}
+   \vspace*{\fill}
+   \centering
+   \noindent
+   \textit{ Este trabalho é dedicado às crianças adultas que,\\
+   quando pequenas, sonharam em se tornar cientistas.} \vspace*{\fill}
+\end{dedicatoria}
 
-\import{sections/}{dedicatoria.tex}
+%
+% Agradecimentos
+%
+\begin{agradecimentos}
+    \import{sections/}{agradecimentos.tex}
+\end{agradecimentos}
+% ---
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% ---
+% RESUMOS
+% ---
 
-\newpage
-\cleardoublepage
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-% ConFigura os n�meros das p�ginas para algarismos romanos
-\pagestyle{plain}
-\pagenumbering{roman}
-
-\newpage
-\thispagestyle{empty}
-
-\import{sections/}{agradecimentos.tex}
-\thispagestyle{plain}
-\newpage
-
-%Resumo:
+% resumo em português
+\setlength{\absparsep}{18pt} % ajusta o espaçamento dos parágrafos do resumo
 \import{sections/}{resumo.tex}
-\thispagestyle{plain}
 
-%Abstract:
-\newpage
+% resumo em inglês
 \import{sections/}{abstract.tex}
-\newpage
+% ---
 
-\listoffigures
-\newpage
+% ---
+% inserir lista de ilustrações
+% ---
+\pdfbookmark[0]{\listfigurename}{lof}
+\listoffigures*
+\cleardoublepage
+% ---
 
-\listoftables
-\newpage
+% ---
+% inserir lista de tabelas
+% ---
+\pdfbookmark[0]{\listtablename}{lot}
+\listoftables*
+\cleardoublepage
+% ---
 
-\tableofcontents
-\newpage
-% Inclui a lista de algoritmos
-%\incluilistadealgoritmos
+% ---
+% inserir o sumario
+% ---
+\pdfbookmark[0]{\contentsname}{toc}
+\tableofcontents*
+\cleardoublepage
+% ---
 
 
-% Corpo do documento -------------------
+% ----------------------------------------------------------
+% ELEMENTOS TEXTUAIS
+% ----------------------------------------------------------
+\textual
 
-% ConFigura os n�meros das p�ginas para algarismos indo-arabicos
-\pagestyle{plain}
-\setcounter{page}{1}
-\pagenumbering{arabic}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Definicao do cabecalho: secao do lado esquerdo e numero da pagina do lado direito
-\pagestyle{fancy}
-\addtolength{\headwidth}{\marginparsep}\addtolength{\headwidth}{\marginparwidth}\headwidth=\textwidth
-\renewcommand{\sectionmark}[1]{\markboth{#1}{}}
-\renewcommand{\sectionmark}[1]{\markright{\thesection\ #1}}\lhead[\fancyplain{}{\bfseries\thepage}]%
-         {\fancyplain{}{\emph{\rightmark}}}\rhead[\fancyplain{}{\bfseries\leftmark}]%
-             {\fancyplain{}{\bfseries\thepage}}\cfoot{}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% ---
+% Introdução
+% ---
 \import{sections/}{01-introduction.tex}
-\newpage
+% ---
+% Fundamentação teórica
+% ---
 \import{sections/}{02-background.tex}
-\newpage
+% ---
+% Design de pesquisa
+% ---
 \import{sections/}{03-study-design.tex}
-\newpage
+% ---
+% Resultados
+% ---
 \import{sections/}{04-results.tex}
-\newpage
+% ---
+% Discussões
+% ---
 \import{sections/}{05-discussions.tex}
-\newpage
+% ---
+% Trabalhos relacionados
+% ---
 \import{sections/}{06-related-work.tex}
-\newpage
+% ---
+% Ameaças à validade
+% ---
 \import{sections/}{07-threats.tex}
-\newpage
+% ---
+% Conclusão
+% ---
 \import{sections/}{08-conclusion.tex}
-\newpage
+% ---
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% BIbliografia
 
-% \bibliographystyle{abntex2}
-%\bibliographystyle{abbrv} % estilo de bibliografia
+% ----------------------------------------------------------
+% ELEMENTOS PÓS-TEXTUAIS
+% ----------------------------------------------------------
+\postextual
+% ----------------------------------------------------------
+
+% ----------------------------------------------------------
+% Referências bibliográficas
+% ----------------------------------------------------------
 \bibliography{mybibfile} % arquivos com as entradas bib.
 
-\newpage
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%\pagestyle{plain}
+
+% ----------------------------------------------------------
+% Apêndices
+% ----------------------------------------------------------
 \import{sections/}{09-appendix.tex}
 
-% \section{Título do apêndice B}
-% \label{ape:apeB}
 
-% Incluir o texto do apêndice aqui, caso haja.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
 \end{document}

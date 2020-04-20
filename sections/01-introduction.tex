@@ -1,11 +1,7 @@
 \chapter{Introduction} 
-ssfsdfds
-
-
-\section{Introduction}
 \label{sec:introduction}
 
-\subsection{Context and Problem}
+\section{Context and Problem}
 
 Code smell is a symptom of poor code design on software development \cite{fowler1999refactoring}. It often occurs when developers poorly conceived the design of the code component or because they did not properly designed the solution due to strict deadlines \cite{palomba2014they}. Empirical studies indicate that code smells leads to a lack of code comprehensibility \cite{abbes2011empirical} and increases change and fault-proneness, affecting negatively the software maintainability \cite{yamashita2013exploring}. Refactoring \cite{fowler1999refactoring} is a useful technique that tends to prevent the occurrence of code smells.
 
@@ -18,7 +14,7 @@ The subjectiveness concerned with individual code smells assessment was addresse
 
 In our research, rather than merely show a suspicions source code and the respective informal definition of the code smell, we propose to show to the developer a visualization of a decision tree classifier, composed by some metric-based rules, aimed to inform the developer the reasons why some source code was previously classified as a host of a code smell. Thereafter, the developer can confirm or not the occurrence of certain code smell aided by such rules that indicates the reason why the source code is "smelly". Inspecting a decision tree model representation, through its nodes and rules, can give new insights to developers in order to identify which attributes (metrics) are the strongest predictors of the class variable (smelly or not) \cite{freitas2014comprehensible}. These new insights may tease the developer to reasoning the occurrence of a code smell widely, not restricting to factors concerned only to past experiences and backgrounds.
 
-\subsection{Objective}
+\section{Objective}
 
 Inspired by previous study \cite{hozano2018you}, we aim at investigating how the code smell agreement among developers may be influenced by the visualization provided by a comprehensible classification model, the decision tree classifier. \cite{freitas2014comprehensible}. This classifier was largely employed \cite{azeem2019machine} in recent studies focused on automatic smell detection and offered good effectivity measures \cite{amorim2015experience}.  Moreover, decision trees have an output that is pretty easy to interpret, giving the opportunity to properly understand the mechanisms that lead to the detection of a certain code smell instance \cite{azeem2019machine}. 
 
@@ -30,7 +26,7 @@ In this study we address the following hypotheses:
         \item \textbf{(H3)} from the perspective of decision making, the decision tree visualization is useful to the evaluation process.
     \end{itemize}
 
-\subsection{Execution and main results}
+\section{Execution and main results}
 
 To perform  the objectives aforementioned,  we gather collaborations from 30  developers from industry and academy. They evaluated 2 groups with 4 tasks each with source codes potentially affected by some type of smell. Each group of task expose the developer to a source code in distinct perspectives, so one shows the classification model that predicted the code as "smelly" whereas the another group doesn't (blind evaluation).  The experiment was carry out through a web-based app created exclusively to collect the evaluations from participants, designed to comply with the requirements of study design.
 
@@ -46,7 +42,7 @@ The main results obtained are:
 
 
 
-\subsection{Contributions}
+\section{Contributions}
  
 Our approach offered a novel way to detect code smells using metric-based rules to improve reasoning about the smelliness of the source code under analysis.
 From this study emerges the following contributions:
@@ -56,7 +52,7 @@ From this study emerges the following contributions:
          \item identification of the most concerned issues about the usefulness of the decision tree models.
      \end{itemize}
 
-\subsection{Research structure}
+\section{Research structure}
 
 This research is structured as follows. 
 \begin{itemize}

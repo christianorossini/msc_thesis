@@ -1,13 +1,11 @@
 \chapter{Results}
-
-\section{Results}
 \label{sec:results}
 
 In the following sections, we discuss all the outcomes brought by data analysis, which supports the research questions defined in our study. In the first subsection (Section \ref{sec:overalAgreement}) we present the agreement considering all members who participate in our study, we summarize the evaluations and calculate the agreement using Fleiss Kappa measure. In further sections, we will refine the results from Section \ref{sec:overalAgreement} presenting the agreement among participants by considering different factors related to them, such as their origin (Section \ref{sec:originAgreement}) and experience (Section \ref{sec:participantExperienceAgreement}). These results help us to answer \textbf{RQ1}. In our study, we do our best to describe and discuss only statistically significant Kappa values by considering a \textit{p-value} < 0.05. Despite it was not possible in some cases.
 
 In Section \ref{sec:effortSpentAnswerTasks} we address the effort spent by participants to accomplish the tasks considering both evaluation modes - with and without decision tree visualization, whose result answers the  \textbf{RQ2}. Finally, the results related to the usefulness of decision tree for decision making, which helps to answer the \textbf{RQ3}, is described in Section \ref{sec:usefulnessDecisionTree}. The results and materials used in our empirical study are available at \hyperlink{https://git.io/Jv6cM}{https://git.io/Jv6cM}.
 
-\subsection{Overall participants' agreement} \label{sec:overalAgreement}
+\section{Overall participants' agreement} \label{sec:overalAgreement}
 
 For the first subsection, we summarize all evaluations provided by participants separated by scenarios, i. e., the scenario with decision tree visualization (\textit{DT}) and without decision tree visualization (\textit{No DT}), as we may see in Table \ref{tbl:overallTableAgreement}. Each row corresponds to the task accomplished by the participants, the column \textit{Code Smell} identifies the type of code smell that was suggested by the task. Each cell, under the columns named \textit{Disagreed} and \textit{Agreed}, represents the sum of evaluations made by participants.
 
@@ -87,14 +85,14 @@ No DT & 0.041 & 0.058 & {\cellcolor[rgb]{0.753,0.753,0.753}}0.049 \\
 
 The showed Kappa measures tell us that the values from the \textit{DT} scenario (highlighted in bold) overcome the \textit{No DT} scenario in both assessed groups, as well as the average considering the two groups. Hence, the \textit{DT} scenario presented a better agreement among participants compared to the \textit{No DT} scenario. Therefore, it means that the scenario in which the participant obtained insights provided by a visualization from a decision tree model (\textit{DT}) has a relative advantage in terms of agreement. %Therefore, the fact that the scenario "DT" overcomes the scenario "No DT" confirms that the visualization of the rules that describes why certain code snippet was classified as smelly influences the decision making during the evaluation, impacting in the agreement among participants. 
 
-\subsection{Developer's agreement considering their origin} \label{sec:originAgreement}
+\section{Developer's agreement considering their origin} \label{sec:originAgreement}
 
 During the experiment, we collected information about what is the participant's origin,
 if he is from Academy, Industry or both. In the analysis described in the previous section - the overall agreement among participants - we evaluated the inter-rater agreement among all participants responsible for evaluating tasks. At this point, in order to investigate the influence of the origin on the agreement among their evaluations, we split the whole set of participants into subgroups. Due to limitations regarding the number of participants, the only subgroup that deserves a deeper investigation in this subsection is the participants from the academy.
 
 Afterward, we calculate the agreement among the evaluations considering scenarios with and without decision tree visualization. Finally, we compare such subgroup agreement with the overall agreement calculated in section \ref{sec:overalAgreement}. Such comparison allows us to understand whether the origin of the participant plays some role to increase or decrease the agreement among developers when compared to the whole set of participants. 
 
-\subsubsection{Participants from academy} \label{sec:participantsAcademyAgreement}
+\subsection{Participants from academy} \label{sec:participantsAcademyAgreement}
 
 In this section, we investigate the agreements reached by participants from the academy, a similar approach as the previous section (Section \ref{sec:overalAgreement}). The Table \ref{tbl:academyKappaValues} shows the Kappa values and the Table \ref{tbl:academyTableEvaluation} clarifies how was distributed the evaluations through tasks and scenarios. The obtained Kappa measures show us that the agreement strength across task groups and scenarios is classified starting from Poor ($Kappa < 0$) up to Slight ($0.01 < Kappa < 0.2$). The Kappa measures highlighted in bold indicate that the agreement in \textit{No DT} scenario overcomes the \textit{DT}scenario in \textit{Task Group 1} whereas the agreement in \textit{DT} scenario overcomes the \textit{No DT} scenario in \textit{Task Group 2}. Despite the average Kappa agreement indicates the \textit{DT} scenario has a better agreement in general, the agreement reached by the \textit{DT} scenario was not better in both tasks group.
 
@@ -151,13 +149,13 @@ Figure \ref{fig:overallXacademy} illustrates the average agreement observed in t
 
 %Through the analysis of evaluations by task (Table \ref{tbl:academyTableEvaluation}, we can see that the code smells that emphasize the size of lines of code, God Class and Long Method, keep a similar behavior to that seen in the section \ref{sec:overalAgreement}, due to the high difference of participants who voted in "agree" and "disagree".
 
-\subsection{Agreements by experience} \label{sec:participantExperienceAgreement}
+\section{Agreements by experience} \label{sec:participantExperienceAgreement}
 
 Previously we investigate the inter-rater agreement based on participants’ origin. In this turn, we investigate the agreements taking into account the participants’ experience. In this way, we analyze the agreement among the more experienced participants in three different profiles: code smell detection, Java programming and development.
 
 During the experiment execution, the developer rated his experience by choosing one of five options: "I do not have any experience", "Very low", "Low", "High" and "Very high".  So the experience of each developer is defined by the self-assigned ratings reported by him, so we consider an experienced developer the one who have experience rating above "High". Due to the constraints regarding the number of participants, we also include participants self-rated "Low", it contributed to becoming the results more statistically significant. 
 
-\subsubsection{Experienced participants on code smell detection} \label{sec:participantsCodeSmellDetecAgreement}    
+\subsection{Experienced participants on code smell detection} \label{sec:participantsCodeSmellDetecAgreement}    
 In this section, we extract a subset of participants who are experienced in code smell detection, putting side by side the agreements obtained by the \textit{DT} scenario and the  \textit{No DT} scenario. 
 
 \begin{table}[ht]
@@ -216,7 +214,7 @@ In the Table \ref{tbl:codeSmellDetectionKappaValues}, we can see that the task e
 
 Comparing the agreement computed through the average of Fleiss Kappa measure with the overall agreement, as shown in Figure \ref{fig:overallxcodeSmellDetection}, the average of agreement from experienced developers on code smell detection performed better than the overall participants. Such result indicates that the expertise of such type of participant in detecting code smells in several software projects brings some uniformity of evaluations, as both scenarios of agreement from experienced developers overcome the overall agreement. Moreover, we may infer that the rules from the decision tree were an important factor for increasing the agreement among developers, thus it may help for accurate reasoning about the smelliness or absence of smell during its detection. 
 
-\subsubsection{Experienced participants on Java language} \label{sec:participantsJavaAgreement}    
+\subsection{Experienced participants on Java language} \label{sec:participantsJavaAgreement}    
 
 In this section we analyze how the experienced participants on Java language agree in code smell detection, computing the Kappa agreements obtained by \textit{DT} scenario and \textit{No DT} scenario.
 
@@ -273,7 +271,7 @@ No DT & 0.018 & \textbf{0.233} & {\cellcolor[rgb]{0.753,0.753,0.753}}\textbf{0.1
 
 Comparing the average agreement with the overall agreement, as shown in Figure \ref{fig:overallxjavaLanguage}, the agreement average of experienced Java language developers performed better than the overall participants in both scenarios. But, among experienced participants in Java language, unlike the experienced participants on code smell detection, the \textit{DT} scenario had a lower agreement than the \textit{No DT} scenario. So we may infer that the decision tree didn't have such importance on the agreement, taking into account that, when it was omitted, they reached a better agreement.
 
-\subsubsection{Experienced participants on development} \label{sec:participantsDevelopmentAgreement}    
+\subsection{Experienced participants on development} \label{sec:participantsDevelopmentAgreement}    
 Now we investigate how the experienced developers agree in code smell detection, computing the Kappa measures obtained by \textit{DT} scenario and \textit{No DT} scenario.
 
 The Table \ref{tbl:developmentKappaValues} shows the Kappa agreement values and the Table \ref{tbl:developmentTableEvaluation} shows a detailed view of the distribution of evaluations from tasks and scenarios. From the obtained results of the Kappa measure, we observe that the measures for both scenarios keep the low agreement as usual, with an agreement strength classified as slight.
@@ -343,7 +341,7 @@ Comparing the average agreement of experienced developers with the overall agree
 % \end{figure}
 
 
-\subsection{The effort spent to answer the tasks} \label{sec:effortSpentAnswerTasks}
+\section{The effort spent to answer the tasks} \label{sec:effortSpentAnswerTasks}
 
 For each task of the experiment, we measured the time that the participant spent to accomplish tasks in order to measure effort. Figure \ref{fig:timeSpentAnswerTasks} illustrates boxplots containing the time distribution evolving the two groups of tasks. We dismissed the outliers to adjust the range of analysis from 0 to 16 minutes (y-axis), increasing the comprehension of the graph. 
 
@@ -360,7 +358,7 @@ The \textit{Tasks group 2} presents a higher difference between scenarios \texti
 
 Therefore, for both tasks group, there isn't any evidence that indicates the benefits related to the effort reduction when detecting code smells with a decision tree, i. e., the time spent to detect code smells visualizing the rules provided by a decision tree tends to be equivalent or to overcome the time spent to detect code smells based solely on code inspection. 
 
-\subsection{The usefulness of decision tree visualization for decision making} \label{sec:usefulnessDecisionTree}
+\section{The usefulness of decision tree visualization for decision making} \label{sec:usefulnessDecisionTree}
 
 Throughout the participation in the experiment, when faced with the scenario with a decision tree, the participant answered an open question that asked him to inform what insight or contribution the decision tree gave him in order to accomplish the task. We analyzed manually each answer to discover patterns that may indicate the importance of the decision tree for decision making.  From these answers, we apply a coding technique \cite{seaman1999qualitative} to recognize these patterns. 
 

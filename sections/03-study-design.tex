@@ -1,7 +1,4 @@
 \chapter{Study Design}
-
-
-\section{Study Design}
 \label{sec:studydesign}
 
 The main challenge in the identification of code smells is that their definitions are based on inaccurate concepts that make developers to have divergent reasoning whether a piece of code is a smell or not. The divergences impact negatively the agreement on code smell evaluations \cite{hozano2018you}.
@@ -27,7 +24,7 @@ The motivation of this question aims at analyzing if transparent metric-based ru
 
 In the next sections, we describe in detail the steps performed in our study.
 
-\subsection{Code smell types selection} \label{sec:codeSmellTypes}
+\section{Code smell types selection} \label{sec:codeSmellTypes}
 
 In our study, we considered the four code smell types briefly described in Table \ref{tbl:codeSmellTypes}. We chose these types based on previous studies about the developer’s perceptions \cite{palomba2014they}  and agreements \cite{hozano2018you}. The list
 varies from highly perceived and identified types (god class, long
@@ -60,7 +57,7 @@ Long Method (LM)                                       & method & A method that 
 \end{tabularx}
 \end{table}
 
-\subsection{The oracle dataset}
+\section{The oracle dataset}
 
 We call our source to train the machine learning technique as an oracle dataset. This dataset contains instances that represent java classes or methods mined from several projects and columns composed by independent and dependent variables, which are software metrics and a boolean-type classification attribute, that marks the occurrence of a code smell, respectively. 
 
@@ -101,8 +98,7 @@ Xerces & 2.3.0 & XML Parser  \\
 \end{tabular}
 \end{table}
 
-
-\subsection{Training the algorithm and generating the classifiers}
+\section{Training the algorithm and generating the classifiers}
 
 Decision tree refers to a hierarchical model of decisions and their consequences, used to classify an object or an instance into a predefined set of classes based on their attributes values \cite{rokach2008data}. In artificial intelligence, this algorithm is known as an induction algorithm because it obtains a training set and forms a model that generalizes the relationship between the input attributes and the target attribute \cite{rokach2008data}. 
 Researches recognize decision trees as a comprehensible (or interpretable) classifier for humans \cite{guidotti2018survey} due to its intuitive graphical structure and its capability to help users to focus their analysis on the most relevant attributes, rejecting non-relevant ones \cite{freitas2014comprehensible}.
@@ -157,7 +153,7 @@ rb  & 3 & 2 & 84  & 27  & 9 & 5 & 0,750 & 0,724 & 0,721 \\
 \label{tbl:effectivityTable}
 \end{table*}
 
-\subsection{Study Procedure} \label{sec:studyProcedure}
+\section{Study Procedure} \label{sec:studyProcedure}
 
 %Based on the RQs (research questions), we aim to evaluate the following hypotheses: Providing the participant with the rules that predicts the code smell, through a graphical representation of the decision tree, \textbf{(H1)} we're going to have a better agreement among developers about the occurrence of a certain type of code smell, \textbf{(H2)} participants are going to have a better confidence about the occurrence of a code smell and \textbf{(H3)} participants are going to take less time to evaluate the occurrence of a code smell. 
 The core procedure of our study is to test two distinctive treatments for different subjects (participants): evaluation of code smell with a decision tree visualization and evaluation of code smell without decision tree visualization. At the same time, we must assure the equivalence of evaluations from participants splitting several code snippets into two groups: in each group, each participant evaluates a task (a code snippet that hosts a code smell) along with a distinctive treatment.
@@ -200,7 +196,7 @@ The application's URL was published on the Internet, mainly in social networks f
     
 \end{enumerate}
 
-\subsection{Tasks accomplishment} \label{sec:tasksAccomplishment}
+\section{Tasks accomplishment} \label{sec:tasksAccomplishment}
 
 To our context, a task is an evaluation unit which has a correspondent Java code, chosen from a list of detected (predicted) smelly codes that are supposed to be affected by one of the code smells of Section \ref{sec:codeSmellTypes}. As we can observe in the experiment design illustrated in Figure \ref{fig:latinSquare}, the tasks are divided into two groups, each group with six tasks. Four of these tasks are control tasks or, as we call, "dummy" tasks. The dummy tasks aim to limit the biased \cite{palomba2014they} and carelessly participations, so we might filter participants that indicate the same answers without any criterion. Therefore, we have twelve tasks, but only eight are considered valid tasks (see Table \ref{tbl:tasksGroup1} and Table \ref{tbl:tasksGroup2}).
 
@@ -284,7 +280,7 @@ The scenario with decision tree visualization (Figure \ref{fig:taskEnvironmentDT
 \label{fig:highlightedDT}
 \end{figure}
     
-\subsection{Experiment execution and data inspection}
+\section{Experiment execution and data inspection}
 
 The experiment lasts about 4 weeks and had 30 participants who completed all the required tasks successfully. Afterward, we collected all the data from a relational database and we performed a data inspection to guarantee the quality of the data observed in the study. Thus, we analyzed the evaluations and open questions in order to identify problems that could interfere with the data analysis negatively.
 
@@ -299,11 +295,11 @@ As mentioned previously, we obtained answers from 30 participants with different
 \label{fig:sefRatedExperience}
 \end{figure}
 
-\subsection{Data analysis}
+\section{Data analysis}
 
 After experiment execution and data collection we summarized the data to answer the research questions. We use methods to (i) analyze the inter-rater agreement among developers as well as developer's experiences and backgrounds that may influence such agreement, (ii) compute the confidence of evaluations considering the scenario with decision tree visualization and the scenario without decision tree and (iii) analyse the time spent by participants to accomplish each task considering both scenarios.
 
-\subsubsection{Inter-rater agreement}
+\subsection{Inter-rater agreement}
 
 To answer the \textbf{RQ1}, we use a statistical method that calculates the inter-rater agreement among the developers’ evaluations. Fleiss Kappa \cite{fleiss1971measuring} measure the degree of agreement of the nominal or ordinal assessments made by multiple appraisers when assessing the same samples. Thus, this measure evaluates the concordance or agreement among multiple raters \cite{fleiss1971measuring}. This measure reports a number lower or equal to 1. If the Kappa value is equal to 1, then the raters are in complete agreement, unlike if the agreement is lower than 0 (zero), it means that there is no agreement among raters or it is weaker than expected by chance. Thus, we perform the following actions:
 \begin{itemize}
@@ -341,12 +337,12 @@ To answer the \textbf{RQ1}, we use a statistical method that calculates the inte
 
 %In section \ref{sec:tasksAccomplishment} we mentioned that each developer evaluate the code smell based in four options. In two of them (strongly agree and slightly agree) he agrees, with different proportions though, that the source code hosts the code smell described in the tasks and in the other two options for the opposite. The level of confidence considers how much assignments of "slight" or "strong" the developers did. So we consider that a developer who evaluates a task as "Strongly agree" or "Strongly disagree" was made with more confidence than who evaluates a task as "Slightly agree" or "Slightly disagree". Thus, we converted all assignments of "Strong" as level of confidence 2 and assignments of "Slight" as level of confidence 1. 
 
-\subsubsection{Time spent to accomplish tasks}
+\subsection{Time spent to accomplish tasks}
 
 To answer the \textbf{R2}, we measure the time that the participant spend to
 accomplish tasks with or without decision tree visualization, as a measurement of effort. During the experiment execution, all tasks were time-sensitive. It means that the experiment tool was designed with a time trigger that starts a time count whenever the participant explicitly starts a task and it stops when the participant submits such task. The time interval is stored in seconds and after converted in minutes to improve the readability.
 
-\subsubsection{The usefulness of decision trees for decision making}
+\subsection{The usefulness of decision trees for decision making}
 
 To answer the \textbf{RQ3}, we gathered all answers from the open question which asks the participant about what the insights/contributions were given by decision tree in order to support the decision making, considering the context of the task that is under evaluation. All the answers were analyzed by the authors and after we use the coding technique 
 \cite{seaman1999qualitative} to categorize the detected contributions from qualitative data. From the analysis of the answers, we classified as good contributions to decision making the opinions which stated that the decision tree was useful for the presented evaluation context. 
