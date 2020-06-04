@@ -8,19 +8,15 @@ After a learning process, with software metrics as independent variables,  we in
 \textbf{RQ1}: \textit{Do an aided approach of code smell detection - using a tree classifier representation – influence on agreement among developers}?
 
 The motivation for this question is to investigate how developers agree after evaluating candidate source codes from real projects that are suspicious to host a certain type of code smell. During the experiment, two distinct perspectives are considered: evaluations aided by decision tree visualization and evaluations without any visualization (only "raw" source code). We analyze the degree of agreement from both perspectives separately and compare.
-These analysis and comparison are made considering the (i) totality of developers that contributes to our work and (ii) by grouping according to common characteristics that they share. Thus, we aimed at performing a deeper investigation in order to increase the knowledge about to what extent the rules provided by a comprehensible classification model can influence the agreement among developers when the developers detect smells in unfamiliar source code. Our results may shed light on the construction of comprehensible machine learning models that is able to aid the developer during the process of code smell detection.
+These analysis and comparison are made considering the (i) totality of developers that contributes to our work and (ii) by grouping according to common characteristics that they share. Thus, we aimed at performing a deeper investigation in order to increase the knowledge about to what extent the rules provided by a comprehensible classification model can influence the agreement among developers when the developers detect smells in unfamiliar source code. Our results may shed light on the construction of comprehensible machine learning models that are able to aid developers during the process of code smell detection.
 
-%\textbf{RQ2}: \textit{Do an aided approach of code smell detection - using a tree classifier representation – increase the confidence of developers during each detection?}
-
-%The motivation for this question aims at analysing if the metric-based rules from decision tree classifier makes the developers more confident during evaluations of code smell on suspicious source code. The fact of showing more elements than a simple "raw" code, such elements being rules that indicates the presence of code smell, may  offer to the developer new insights that he didn't know or notice before. Thus, it would be natural that equipped with more elements to decision making, he makes assignments with more confidence.
-
-\textbf{RQ2}: \textit{How much effort do developer spend during code smell detection with a tree classifier support?}
+\textbf{RQ2}: \textit{How much time do developers spend during code smell detection with a tree classifier support?}
 
 This RQ aims at measuring the time spent to accomplish each task evaluation of code smell detection, separating evaluations aided by decision tree visualization and evaluations without any visualization. We built an experiment that has a stopwatch integrated into each task. After each task accomplishment, the experiment counts the time-lapse from the start of the task until the task submission. Thus, we measure how long time the developer takes to detect smells when he is aided by a decision tree classifier and when he is not.
 
 \textbf{RQ3}: \textit{How useful is the decision tree visualization for decision making?}
 
-The motivation of this question aims at analyzing if transparent metric-based rules from a decision tree classifier are relevant to aid the decision making during smell detection. By collecting opinions through an open question, the empirical experiment gives several insights about to what extent a visual representation of a classification model contributes to detecting a code smell. The result of this RQ is important to find out the strong and weak points of our approach, mainly concerning the structure of the available classification trees.
+The motivation of this question aims at analyzing if transparent metric-based rules from a decision tree classifier are relevant to aid the decision making during smell detection. By collecting opinions through an open question, the empirical experiment gave us several insights about to what extent a visual representation of a classification model contributes to detecting a code smell. The result of this RQ is important to find out the strong and weak points of our approach, mainly concerning the structure of the available classification trees.
 
 In the next sections, we describe in detail the steps performed in our study.
 
@@ -66,7 +62,7 @@ We imported the work made by Palomba et al. \cite{palomba2018diffuseness} to gat
 Largely used as an input for predictive code smell detection in machine learning-based approaches \cite{fontana2016comparing, palomba2018detecting, hozano2017, fontana2013code, azeem2019machine}, software metrics are utilized to measure quality as well as estimate the cost and effort of software projects \cite{fenton2014software}. We used the educational license of software Understand \footnote{https://scitools.com/} to calculate and extract source code metrics by analyzing the open-source projects listed in Table \ref{tbl:openSourceProjects}. After metric extraction, we got 32 class-level metrics and 14 method-level metrics. 
 
 The complete list of the collected metrics is available in the 
-Table~\ref{tab:classLevelMetricsList} and Table~\ref{tab:methodLevelMetricsList}, given in Appendix~\ref{appe:A}. These metrics cover different aspects of source code such as complexity, size, cohesion and inheritance. Besides, many of them are mentioned in various publications that involve software engineering \cite{nunez2017source}, mainly machine learning applications \cite{azeem2019machine}.
+Table~\ref{tab:classLevelMetricsList} and Table~\ref{tab:methodLevelMetricsList}, given in Appendix~\ref{appe:A}. These metrics cover different aspects of source code such as complexity, size, cohesion and inheritance. Besides, many of them were mentioned in various publications that involve software engineering \cite{nunez2017source}, mainly machine learning applications \cite{azeem2019machine}.
 
 \begin{table}[t]
 \centering
